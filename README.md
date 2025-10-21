@@ -21,5 +21,5 @@ How to Use:
 
 
 
-This project is open-source and fr
+
 
