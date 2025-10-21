@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDA Instagram-Style Feed</title>
+
+<style>
+  :root {
+    --primary-color: #00996b;
+    --secondary-color: #3c3c39;
+    --background-color: #f4f7f9;
+    --text-color: #222;
+  }
+
+  body {
+    font-family: sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .post-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid var(--primary-color);
+  }
+
+  .post-body {
+    padding: 10px;
+  }
+
+  .post-title {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+  }
+
+  .post-category {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: white;
+    background-color: var(--secondary-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+
+  .post-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 5px;
+  }
+
+  .post-actions {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .post-actions button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+
+  /* News Section */
+  .news-section {
+    margin-top: 40px;
+  }
+
+  .news-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+
+  .news-card {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+
+  .news-card a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+</style>
+</head>
+<body>
+
+<header>🏆 KDA Achievement Feed</header>
+
+<main id="feed">
+
+  <!-- Posts will be dynamically inserted here -->
+
+</main>
+
+<section class="news-section">
+  <div class="container">
+    <h2>📢 KDA News</h2>
+    <div id="newsFeed">
+      <!-- News articles will appear here -->
+    </div>
+  </div>
+</section>
+
+<script>
+// --- Student Profiles ---
+const allAchievements = [
+    {id:1, studentName:"masabo michelle", grade:12, category:"Academic", title:"National Merit Scholar Finalist", description:"Michelle was recognized for outstanding academic performance, placing in the top 1% nationally.", date:"2025-05-15", photoUrl:"C:/Users/Gadget Store/OneDrive/Pictures/mi.png"},
+    {id:2, studentName:"masabo stallone", grade:10, category:"Sports", title:"State Champion - 100m Sprint", description:"Stallone broke the school record and secured the gold medal in the regional track meet.", date:"2025-04-22", photoUrl:"C:/Users/Gadget Store/OneDrive/Pictures/bakhi.png"},
+    {id:3, studentName:"inema ketty joana", grade:11, category:"Arts", title:"First Place: Regional Photography Contest", description:"Ketty's piece 'Urban Reflections' earned her top honors and a gallery display.", date:"2025-03-10", photoUrl:"C:/Users/Gadget Store/OneDrive/Pictures/Screenshot 2025-10-21 072419.png"},
+    {id:4, studentName:"ngoga fabrice", grade:9, category:"Leadership", title:"Peer Mentor Award", description:"Recognized by staff and peers for exceptional dedication in leading the new student orientation program.", date:"2025-02-01", photoUrl:"C:/Users/Gadget Store/OneDrive/Pictures/new.png"},
+    {id:5, studentName:"agasaro bella", grade:12, category:"Academic", title:"Full Scholarship to Tech University", description:"Bella received a full-ride scholarship for her work in the school's Robotics Club.", date:"2025-06-05", photoUrl:"C:/Users/Gadget Store/OneDrive/Pictures/Screenshot 2025-10-21 070058.png"},
+    {id:6, studentName:"keza response", grade:11, category:"Sports", title:"Best Female Basketball Player", description:"Keza led the KDA girls’ basketball team to victory in the inter-school championships.", date:"2025-05-20", photoUrl:""},
+    {id:7, studentName:"umuringa ketia", grade:10, category:"Arts", title:"Creative Writing Award", description:"Ketia’s poem collection, 'Dreams of Kigali,' won first place in the National Literature Contest.", date:"2025-04-10", photoUrl:""},
+    {id:8, studentName:"arnold braise", grade:12, category:"Academic", title:"STEM Innovator Award", description:"Arnold built a solar-powered irrigation model showcased at the national science fair.", date:"2025-03-25", photoUrl:""},
+    {id:9, studentName:"ryaziga olave", grade:11, category:"Leadership", title:"Debate Club President", description:"Olave successfully organized the 2025 East African Student Debate Competition at KDA.", date:"2025-04-30", photoUrl:""},
+    {id:10, studentName:"uwase keissa", grade:9, category:"Arts", title:"Fashion & Design Star", description:"Keissa designed eco-friendly outfits that were featured in the KDA Fashion Expo.", date:"2025-03-12", photoUrl:""},
+    {id:11, studentName:"manzi heritier", grade:10, category:"Leadership", title:"Student Council Vice President", description:"Heritier helped organize school charity events and inspired younger students to lead.", date:"2025-05-28", photoUrl:""},
+    {id:12, studentName:"isaac newton", grade:12, category:"Academic", title:"Physics Genius Award", description:"Isaac developed an experiment that demonstrated gravity principles in real-world motion studies.", date:"2025-06-10", photoUrl:""},
+    {id:13, studentName:"ruyonza abazbail", grade:11, category:"Sports", title:"Top Goal Scorer", description:"Abazbail was recognized as the leading scorer in the KDA football league.", date:"2025-05-12", photoUrl:""},
+    {id:14, studentName:"ruyonza abdulbasta", grade:10, category:"Leadership", title:"Team Captain Award", description:"Abdulbasta was chosen as class team captain for his excellent leadership and communication skills.", date:"2025-04-22", photoUrl:""}
+];
+
+// --- Display Student Feed ---
+function displayFeed() {
+    const feed = document.getElementById("feed");
+    allAchievements.forEach(post => {
+        const postCard = document.createElement("div");
+        postCard.className = "post-card";
+
+        postCard.innerHTML = `
+            <div class="post-header">
+                <img src="${post.photoUrl || 'https://via.placeholder.com/50'}" alt="${post.studentName}">
+                <div>
+                  <div><strong>${post.studentName}</strong> (Grade ${post.grade})</div>
+                  <span class="post-category">${post.category}</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="post-title">${post.title}</div>
+                <p>${post.description}</p>
+                <div class="post-date">Achieved on: ${new Date(post.date).toLocaleDateString()}</div>
+            </div>
+            <div class="post-actions">
+                <button>❤️ Like</button>
+                <button>💬 Comment</button>
+            </div>
+        `;
+
+        feed.appendChild(postCard);
+    });
+}
+
+// --- Placeholder News Feed ---
+const newsArticles = [
+    {title:"KDA Wins National Coding Competition", link:"#"},
+    {title:"KDA Students Excel in Regional Arts Festival", link:"#"},
+    {title:"New Robotics Lab Opens at KDA", link:"#"},
+    {title:"KDA Hosts Inter-School Debate Championship", link:"#"}
+];
+
+function displayNews() {
+    const newsFeed = document.getElementById("newsFeed");
+    newsArticles.forEach(news => {
+        const card = document.createElement("div");
+        card.className = "news-card";
+        card.innerHTML = `<a href="${news.link}" target="_blank">${news.title}</a>`;
+        newsFeed.appendChild(card);
+    });
+}
+
+// --- Initialize Page ---
+window.onload = () => {
+    displayFeed();
+    displayNews();
+};
+</script>
+
+</body>
+</html>
