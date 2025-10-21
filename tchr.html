@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KDA News & Achievements Feed</title>
+  <style>
+    :root {
+      --primary-color: #00996b;
+      --bg-color: #f4f7f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --accent: #3c3c39;
+    }
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+    header {
+      background: var(--primary-color);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      margin:0;
+      font-size: 1.8rem;
+    }
+    .feed {
+      max-width: 1000px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 20px;
+      padding: 0 10px;
+    }
+    .post {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .post img {
+      width:100%;
+      height:200px;
+      object-fit: cover;
+    }
+    .post .content {
+      padding: 15px;
+      flex-grow:1;
+    }
+    .post .content h3 {
+      margin:0 0 10px;
+      color: var(--primary-color);
+    }
+    .post .content p {
+      margin:0 0 10px;
+    }
+    .post .content .date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .upload-btn {
+      display:block;
+      margin:10px;
+      text-align:center;
+      padding:10px;
+      background: var(--accent);
+      color:white;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    .upload-input {
+      display:none;
+    }
+    footer {
+      text-align:center;
+      padding:20px;
+      background: var(--primary-color);
+      color:white;
+      margin-top:40px;
+    }
+    footer a {
+      color:white;
+      text-decoration:none;
+      margin:0 8px;
+      font-weight:bold;
+    }
+    @media(max-width:600px){
+      .post img {
+        height:150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KDA News & Achievements</h1>
+  <p>Scroll to explore the latest from KDA!</p>
+</header>
+
+<section class="feed" id="feed">
+
+  <!-- Example Post for Student -->
+  <div class="post" id="post-michelle">
+<img src=""C:\Users\Gadget Store\OneDrive\Pictures\mi.png" alt="masabo">>
+    <div class="content">
+      <h3>Masabo Michelle</h3>
+      <p><strong>Category:</strong> Academic</p>
+      <p><strong>Title:</strong> National Merit Scholar Finalist</p>
+      <p><strong>Date:</strong> May 15, 2025</p>
+      <p>Recognized for outstanding academic performance, placing in the top 1% nationally.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-michelle')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-michelle" accept="image/*" onchange="previewPostImage(event,'img-michelle')">
+    </div>
+  </div>
+
+  <!-- Student: uwase keissa -->
+  <div class="post" id="post keissa">
+    <img id="img-keissa" src="C:\Users\Gadget Store\OneDrive\Pictures\bakhi.png" alt="Masabo Stallone">
+    <div class="content">
+      <h3>uwase keissa</h3>
+      <p><strong>Category:</strong> Sports</p>
+      <p><strong>Title:</strong> State Champion - 100m Sprint</p>
+      <p><strong>Date:</strong> April 22, 2025</p>
+      <p>Broke the school record and secured the gold medal in the regional track meet.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-stallone')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-stallone" accept="image/*" onchange="previewPostImage(event,'img-stallone')">
+    </div>
+  </div>
+
+  <!-- Student: Inema Ketty Joana -->
+  <div class="post" id="post-ketty">
+<img src=""C:\Users\Gadget Store\OneDrive\Pictures\Screenshot 2025-10-21 072419.png"" alt=" Ketty">
+    <div class="content">
+      <h3>Inema Ketty Joana</h3>
+      <p><strong>Category:</strong> Arts</p>
+      <p><strong>Title:</strong> Regional Photography Contest Winner</p>
+      <p><strong>Date:</strong> March 10, 2025</p>
+      <p>Her photo “Urban Reflections” won first place and was featured in the regional gallery.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-ketty')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-ketty" accept="image/*" onchange="previewPostImage(event,'img-ketty')">
+    </div>
+  </div>
+
+  <!-- Student: Ngoga Fabrice -->
+  <div class="post" id="post-fabrice">
+    <img id="img-fabrice" src="https://via.placeholder.com/600x400?text=Fabrice+Achievement" alt="Ngoga Fabrice">
+    <div class="content">
+      <h3>isaac newtorn</h3>
+      <p><strong>Category:</strong> Leadership</p>
+      <p><strong>Title:</strong> Peer Mentor Award</p>
+      <p><strong>Date:</strong> February 1, 2025</p>
+      <p>Recognized for exceptional dedication in leading the new student orientation program.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-fabrice')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-fabrice" accept="image/*" onchange="previewPostImage(event,'img-fabrice')">
+    </div>
+  </div>
+
+  <!-- Student: Agasaro Bella -->
+  <div class="post" id="post-bella">
+    <img id="img-bella" src="https://via.placeholder.com/600x400?text=Bella+Achievement" alt="Agasaro Bella">
+    <div class="content">
+      <h3>Agasaro Bella</h3>
+      <p><strong>Category:</strong> Academic</p>
+      <p><strong>Title:</strong> Full Scholarship - Tech University</p>
+      <p><strong>Date:</strong> June 5, 2025</p>
+      <p>Received a full scholarship for excellence in robotics and engineering innovation.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-bella')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-bella" accept="image/*" onchange="previewPostImage(event,'img-bella')">
+    </div>
+  </div>
+
+  <!-- Example News Post -->
+  <div class="post" id="post-news1">
+    <img id="img-news1" src="https://via.placeholder.com/600x400?text=KDA+News" alt="KDA News">
+    <div class="content">
+      <h3>KDA School Celebrates New Robotics Lab</h3>
+      <p><strong>Category:</strong> News</p>
+      <p><strong>Date:</strong> July 12, 2025</p>
+      <p>The school has opened a state-of-the-art robotics lab to support student innovation and competition readiness.</p>
+      <button class="upload-btn" onclick="triggerUpload('upload-news1')">Upload/Change Photo</button>
+      <input class="upload-input" type="file" id="upload-news1" accept="image/*" onchange="previewPostImage(event,'img-news1')">
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>Follow KDA on Social Media:</p>
+  <p>
+    <a href="https://facebook.com" target="_blank">Facebook</a> |
+    <a href="https://instagram.com" target="_blank">Instagram</a> |
+    <a href="https://twitter.com" target="_blank">Twitter</a> |
+    <a href="https://youtube.com" target="_blank">YouTube</a>
+  </p>
+  <p>&copy; 2025 KDA — Promoting Excellence</p>
+</footer>
+
+<script>
+  function triggerUpload(inputId) {
+    const inp = document.getElementById(inputId);
+    inp.click();
+  }
+  function previewPostImage(event, imgId) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById(imgId).src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>
